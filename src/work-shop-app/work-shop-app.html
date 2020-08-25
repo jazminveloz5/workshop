@@ -1,0 +1,55 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/jazminm-veloz/jazminm-veloz.html">
+
+<dom-module id="work-shop-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+     <jazminm-veloz title="Propiedades a mano"input-value="Input a mano" button-value="Este botòn se escribiò a mano">
+    </jazminm-veloz>
+    <jazminm-veloz title="{{titulo}}"input-value="{{input}}"button-value="[[button]]"></jazminm-veloz>
+    <jazminm-veloz title="{{inputLabel}}" input-value="{{prop2}}" button-value="{{prop2}}"></jazminm-veloz>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class WorkShopApp extends Polymer.Element {
+      static get is() { return 'work-shop-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'work-shop-app'
+            },
+          titulo:{
+            type: String,
+            value: 'Titulo a travès de propiedad'
+          },
+          input:{
+            type:String,
+            value: 'Input a travès de propiedad'
+          },
+          button:{
+            type: String,
+            value: 'Botòn 2 a travès de propiedad'
+          },
+          inputLabel:{
+            type: String,
+            value: "Data binding",
+            Notify: true
+          },
+          prop2:String
+        };
+      }
+    }
+
+    window.customElements.define(WorkShopApp.is, WorkShopApp);
+  </script>
+</dom-module>
