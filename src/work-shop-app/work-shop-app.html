@@ -9,10 +9,10 @@
         display: block;
       }
     </style>
-  <!--  <div hidden="{{!showMe}}">
+  <div hidden$="{{!showMe}}">
 <login-componente on-user-corre-changed="login2"></login-componente>
 </div>
-<div hidden="{{showMe}}"> -->
+<div hidden$="{{showMe}}"> 
     <h2>Hello [[prop1]]!</h2>
      <jazminm-veloz title="Propiedades a mano"input-value="Input a mano" button-value="Este botòn se escribiò a mano">
     </jazminm-veloz>
@@ -58,7 +58,13 @@
           }
       };
     }
-   
+    login2(e){
+  console.log(e.detail);
+  if(e.detail.value){
+    alert("¡ Bienvenido !");
+    this.showMe = false;
+  }
+}
     }
     window.customElements.define(WorkShopApp.is, WorkShopApp);
   </script>
