@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/jazminm-veloz/jazminm-veloz.html">
+<link rel="import" href="../../bower_components/login-componente/login-componente.html">
 
 <dom-module id="work-shop-app">
   <template>
@@ -8,11 +9,16 @@
         display: block;
       }
     </style>
+  <!--  <div hidden="{{!showMe}}">
+<login-componente on-user-corre-changed="login2"></login-componente>
+</div>
+<div hidden="{{showMe}}"> -->
     <h2>Hello [[prop1]]!</h2>
      <jazminm-veloz title="Propiedades a mano"input-value="Input a mano" button-value="Este botòn se escribiò a mano">
     </jazminm-veloz>
     <jazminm-veloz title="{{titulo}}"input-value="{{input}}"button-value="[[button]]"></jazminm-veloz>
     <jazminm-veloz title="{{inputLabel}}" input-value="{{prop2}}" button-value="{{prop2}}"></jazminm-veloz>
+  </div>
   </template>
 
   <script>
@@ -43,13 +49,17 @@
           inputLabel:{
             type: String,
             value: "Data binding",
-            Notify: true
           },
-          prop2:String
-        };
-      }
+          showMe:{
+            type:Boolean,
+            value:true,
+            notify:true
+            
+          }
+      };
     }
-
+   
+    }
     window.customElements.define(WorkShopApp.is, WorkShopApp);
   </script>
 </dom-module>
