@@ -1,6 +1,7 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../../bower_components/jazminm-veloz/jazminm-veloz.html">
 <link rel="import" href="../../bower_components/login-componente/login-componente.html">
+<link rel="import" href="../../bower_components/iron-ajax/iron-ajax.html">
 
 <dom-module id="work-shop-app">
   <template>
@@ -19,8 +20,21 @@
     <jazminm-veloz title="{{titulo}}" input-value="{{input}}" button-value="[[button]]"></jazminm-veloz>
     <jazminm-veloz title="{{inputLabel}}" input-value="{{prop2}}" button-value="{{prop2}}"></jazminm-veloz>
   </div>
+  <iron-ajax auto="" url="https://pokeapi.co/api/v2/pokemon/?limit=50" handle-as="json" on-response="handleResponse">
+  </iron-ajax>
+<template is="dom-repeat" items="{{Pokemon1}}">
+  <paper-card elevation="2">
+  <br>
+  <div class="card-content">
+    <img class="pokeimg" src="{{item.url}}" width="100px" height="100px">
+    <p>{{item.name}}</p>
+    <p>#{{item.id}}</p>
+  </div>
+  </paper-card>
+</template>
   </template>
 
+  
   <script>/**
  * @customElement
  * @polymer
@@ -56,6 +70,10 @@ class WorkShopApp extends Polymer.Element {
         type: Boolean,
         value: true,
         notify: true
+      },
+      Pokemon1: {
+        type: Array,
+        value: []
       }
     };
   }
@@ -67,6 +85,22 @@ class WorkShopApp extends Polymer.Element {
       alert("¡ Bienvenido !");
       this.showMe = false;
     }
+  }
+
+  handleResponse(e) {
+    console.log(e.detail.response);
+    this.pokemon = e.detail.response.results;
+    console.log(this.pokemon);
+    let pokemons = e.detail.response.results;
+    let pikachu = [];
+    pokemons.forEach((pokemon, index) => {
+      pikachu.push({
+        name: pokemon.name,
+        id: index + 1,
+        url: `https://pokeres.bastionbot.org/images/pokemon/${index + 1}.png`
+      });
+    });
+    this.Pokemon1 = pikachu;
   }
 
 }

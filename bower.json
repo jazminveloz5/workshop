@@ -3,7 +3,8 @@
   "main": "index.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "login-componente": "https://github.com/jazminveloz5/login-componente.git#v1.0.5"
+    "login-componente": "https://github.com/jazminveloz5/login-componente.git#v1.0.5",
+    "iron-ajax": "https://github.com/PolymerElements/iron-ajax.git#v2.1.1"
   },
   "devDependencies": {
     "web-component-tester": "Polymer/web-component-tester#^6.0.0",
