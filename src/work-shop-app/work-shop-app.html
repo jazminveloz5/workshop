@@ -22,7 +22,8 @@
   </div>
   <iron-ajax auto url= "https://pokeapi.co/api/v2/pokemon/?limit=50" handle-as="json" on-response="handleResponse">
   </iron-ajax>
-<template is="dom-repeat" items="{{Pokemon1}}">
+
+<template is="dom-repeat" items="{{Pokemon1}}"> 
   <paper-card elevation="2">
   <br>
   <div class="card-content">
@@ -83,21 +84,22 @@
   }
     }
 
-handleResponse(e){
+handleResponse(e){ //llama al mètodo, lanzarà evento
 console.log(e.detail.response)
 this.pokemon=e.detail.response.results
 console.log(this.pokemon)
 
-  let pokemons = e.detail.response.results;
-  let pikachu = [];
-  pokemons.forEach((pokemon, index) => {
-    pikachu.push({
-      name:pokemon.name,
-      id: index + 1,
-      url: `https://pokeres.bastionbot.org/images/pokemon/${index+1}.png`
+  let pokemones = e.detail.response.results; //guarda los resultados
+  let pikachu = []; //variable auxiliar, es arreglo
+  pokemones.forEach((pokemoncito, contar) => //
+  {
+    pikachu.push({ //introduce los valores 
+      name:pokemoncito.name,
+      id: contar + 1,
+      url: `https://pokeres.bastionbot.org/images/pokemon/${contar+1}.png`//$encapsula
   });
 });
-  this.Pokemon1 = pikachu;
+  this.Pokemon1 = pikachu; //manda a propiedad pokemon1
 }
 }
     window.customElements.define(WorkShopApp.is, WorkShopApp);
